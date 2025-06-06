@@ -15,24 +15,22 @@
   height: 36px;
 
   padding: 16px;
-  padding-left: 48px;
+  padding-left: 36px;
   outline: none;
   border: none;
   border-radius: 8px;
 }
 
 .button {
+  padding: 0;
   width: 36px;
   height: 36px;
   border: none;
   position: absolute;
   top: 0;
-  left: 10px;
+  left: 0;
   background-color: transparent;
-}
-
-.icon {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
