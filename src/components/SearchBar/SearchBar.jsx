@@ -1,0 +1,39 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import css from "./SearchBar.module.css";
+
+const SearchBar = ({ onSubmit }) => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!value.trim()) return toast.error("Input some text");
+    onSubmit(value);
+
+    setValue("");
+  };
+
+  return (
+    <header className={css.header}>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <input
+          className={css.input}
+          type="text"
+          onChange={handleChange}
+          placeholder="Search images and photos"
+          value={value}
+        />
+        <button className={css.button} type="submit">
+          <HiMiniMagnifyingGlass size="16px" />
+        </button>
+      </form>
+    </header>
+  );
+};
+
+export default SearchBar;

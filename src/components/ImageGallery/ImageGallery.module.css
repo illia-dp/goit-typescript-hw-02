@@ -1,0 +1,20 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.galleryItems {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 200px;
+  transition: var(--animation);
+}
+
+.galleryItems:hover {
+  transform: scale(1.04);
+  cursor: zoom-in;
+}
