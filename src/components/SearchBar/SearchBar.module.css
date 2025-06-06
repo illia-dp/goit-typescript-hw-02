@@ -22,11 +22,17 @@
 }
 
 .button {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border: none;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10px;
   background-color: transparent;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

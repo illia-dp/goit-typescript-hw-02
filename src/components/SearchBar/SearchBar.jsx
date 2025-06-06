@@ -29,7 +29,7 @@ const SearchBar = ({ onSubmit }) => {
           value={value}
         />
         <button className={css.button} type="submit">
-          <HiMiniMagnifyingGlass size="16px" />
+          <HiMiniMagnifyingGlass className={css.icon} size="16px" />
         </button>
       </form>
     </header>
