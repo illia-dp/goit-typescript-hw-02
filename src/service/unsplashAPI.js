@@ -8,7 +8,7 @@ export const getPhotos = async (query = "", page = 1) => {
     params: {
       query,
       page,
-      per_page: 18,
+      per_page: 20,
     },
   });
   return response.data;

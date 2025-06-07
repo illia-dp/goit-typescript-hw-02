@@ -4,7 +4,7 @@ import Skeleton from "@mui/material/Skeleton";
 const ImageCardSkeleton = () => {
   return (
     <ul className={css.gallery}>
-      {Array(18)
+      {Array(20)
         .fill()
         .map((_, index) => (
           <li className={css.galleryItems} key={index}>
