@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
-import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import { getPhotos } from "./service/unsplashAPI";
 import ImageModal from "./components/ImageModal/ImageModal";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import "./App.css";
+import ImageCardSkeleton from "./components/ImageCardSkeleton/ImageCardSkeleton";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -72,10 +72,10 @@ function App() {
       <SearchBar onSubmit={handleSubmit} />
       <div className="container">
         {error && <ErrorMessage message={error} />}
-        {loading && <Loader />}
         {images.length > 0 && (
           <ImageGallery images={images} openModal={handleOpenModal} />
         )}
+        {loading && <ImageCardSkeleton />}
         {images.length > 0 && !isLastPage && (
           <LoadMoreBtn onClick={handleLoadMore} />
         )}
