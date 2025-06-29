@@ -1,6 +1,14 @@
+import { OpenModalType } from "../App/App.types";
 import css from "./ImageCard.module.css";
 
-const ImageCard = ({ src, regular, alt, openModal }) => {
+type ImageCardProps = {
+  src: string;
+  regular: string;
+  alt: string;
+  openModal: OpenModalType;
+};
+
+const ImageCard = ({ src, regular, alt, openModal }: ImageCardProps) => {
   return (
     <div className={css.thumb}>
       <img

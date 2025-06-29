@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
-import SearchBar from "./components/SearchBar/SearchBar";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import { getPhotos } from "./service/unsplashAPI";
-import ImageModal from "./components/ImageModal/ImageModal";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import { Image, OpenModalType } from "./App.types";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import ImageGallery from "../../components/ImageGallery/ImageGallery";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { getPhotos } from "../../service/unsplashAPI";
+import ImageModal from "../../components/ImageModal/ImageModal";
+import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import ImageCardSkeleton from "../../components/ImageCardSkeleton/ImageCardSkeleton";
 import "./App.css";
-import ImageCardSkeleton from "./components/ImageCardSkeleton/ImageCardSkeleton";
 
 function App() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [modalImage, setModalImage] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [modalImage, setModalImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
   const [totalPages, setTotalPages] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -44,7 +48,7 @@ function App() {
     fetchData();
   }, [query, page]);
 
-  const handleSubmit = (query) => {
+  const handleSubmit = (query: string) => {
     setQuery(query);
     setPage(1);
     setImages([]);
@@ -56,8 +60,8 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleOpenModal = (image) => {
-    setModalImage(image);
+  const handleOpenModal: OpenModalType = ({ src, alt }) => {
+    setModalImage({ src, alt });
     setModalIsOpen(true);
   };
 
@@ -82,8 +86,8 @@ function App() {
         <ImageModal
           modalIsOpen={modalIsOpen}
           closeModal={handleCloseModal}
-          src={modalImage?.src}
-          alt={modalImage?.alt}
+          src={modalImage?.src ?? ""}
+          alt={modalImage?.alt ?? ""}
         />
       </div>
     </>

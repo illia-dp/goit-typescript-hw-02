@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import css from "./SearchBar.module.css";
 
-const SearchBar = ({ onSubmit }) => {
+type SearchBarProps = {
+  onSubmit: (query: string) => void;
+};
+
+const SearchBar = ({ onSubmit }: SearchBarProps) => {
   const [value, setValue] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!value.trim()) return toast.error("Input some text");
     onSubmit(value);

@@ -1,6 +1,9 @@
 import Modal from "react-modal";
 
-const customStyles = {
+const customStyles: {
+  overlay: React.CSSProperties;
+  content: React.CSSProperties;
+} = {
   overlay: {
     display: "flex",
     justifyContent: "center",
@@ -27,7 +30,14 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-const ImageModal = ({ modalIsOpen, closeModal, src, alt }) => {
+type ImageModalProps = {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  src: string;
+  alt: string;
+};
+
+const ImageModal = ({ modalIsOpen, closeModal, src, alt }: ImageModalProps) => {
   return (
     <div>
       <Modal

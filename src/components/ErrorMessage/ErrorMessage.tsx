@@ -1,6 +1,8 @@
 import css from "./ErrorMessage.module.css";
 
-const ErrorMessage = ({ message }) => {
+type Props = { message: string };
+
+const ErrorMessage = ({ message }: Props) => {
   return <div className={css.error}>{message}</div>;
 };
 

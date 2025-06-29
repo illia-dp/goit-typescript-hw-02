@@ -5,7 +5,7 @@ const ImageCardSkeleton = () => {
   return (
     <ul className={css.gallery}>
       {Array(20)
-        .fill()
+        .fill(null)
         .map((_, index) => (
           <li className={css.galleryItems} key={index}>
             <Skeleton
